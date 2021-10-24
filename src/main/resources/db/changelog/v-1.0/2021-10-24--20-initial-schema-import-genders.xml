@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+
+    <changeSet id="create-table-genders" author="Alexander Reztsov">
+        <createTable tableName="genders">
+            <column name="gender_id" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="gender_type" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+        </createTable>
+
+        <insert tableName="genders">
+            <column name="gender_id" value="0"/>
+            <column name="gender_type" value="MALE"/>
+        </insert>
+
+        <insert tableName="genders">
+            <column name="gender_id" value="1"/>
+            <column name="gender_type" value="FEMALE"/>
+        </insert>
+
+        <insert tableName="genders">
+            <column name="gender_id" value="2"/>
+            <column name="gender_type" value="UNIDENTIFIED"/>
+        </insert>
+
+        <rollback>
+            <dropTable tableName="genders"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
+

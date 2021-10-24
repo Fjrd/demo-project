@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+
+
+    <property name="uuid_type" value="uuid" dbms="postgresql"/>
+    <property name="uuid_type" value="uniqueidentifier" dbms="mssql"/>
+    <property name="uuid_type" value="RAW(16)" dbms="oracle"/>
+
+    <property name="uuid_function" value="uid.uuid_generate_v4()" dbms="postgresql"/>
+    <property name="uuid_function" value="NEWID()" dbms="mssql"/>
+    <property name="uuid_function" value="sys_guid()" dbms="oracle"/>
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+
+    <changeSet id="create-table-employees" author="Alexander Reztsov">
+        <createTable tableName="EMPLOYEES">
+            <column name="id" type="${uuid_type}" generationType="${uuid_function}">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="age" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="experience" type="double">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="job_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_employees_jobs" references="jobs(job_id)"/>
+            </column>
+
+            <column name="project_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_employees_projects" references="projects(project_id)"/>
+            </column>
+
+            <column name="hire_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="gender_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_employees_genders" references="genders(gender_id)"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="employees"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
+
