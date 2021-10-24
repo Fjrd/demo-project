@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <include file="2021-10-24--10-initial-schema-import-jobs.xml" relativeToChangelogFile="true"/>
+    <include file="2021-10-24--11-insert-data-jobs.xml" relativeToChangelogFile="true"/>
+    <include file="2021-10-24--20-initial-schema-import-genders.xml" relativeToChangelogFile="true"/>
+    <include file="2021-10-24--21-insert-data-genders.xml" relativeToChangelogFile="true"/>
+    <include file="2021-10-24--30-initial-schema-import-projects.xml" relativeToChangelogFile="true"/>
+    <include file="2021-10-24--31-import-data-projects.xml" relativeToChangelogFile="true"/>
+    <include file="2021-10-24--40-initial-schema-import-employees.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>
