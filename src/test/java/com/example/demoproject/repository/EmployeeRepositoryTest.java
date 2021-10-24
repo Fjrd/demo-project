@@ -4,7 +4,6 @@ import com.example.demoproject.domain.Employee;
 import com.example.demoproject.domain.Gender;
 import com.example.demoproject.domain.Position;
 import com.example.demoproject.domain.Project;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,13 +16,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
 class EmployeeRepositoryTest {
 
-    final EmployeeRepository repository;
-    Employee employee1;
-    String firstName = "Petya";
-    String lastName = "Petrov";
+    @Autowired
+    private final EmployeeRepository repository = null;
+    private Employee employee1;
+    private static final String firstName = "PETYA";
+    private static final String lastName = "PETROV";
 
     @BeforeEach
     void setup(){

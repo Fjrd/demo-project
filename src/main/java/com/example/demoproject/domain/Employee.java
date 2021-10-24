@@ -23,22 +23,22 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Include
-    UUID id;
+    private UUID id;
 
-    String firstName;
-    String lastName;
-    Integer age;
-    Double experience;
+    private String firstName;
+    private String lastName;
+    private Integer age;
+    private Double experience;
 
     @Column(name = "job_id")
-    Position position;
+    private Position position;
 
     @Column(name = "project_id")
-    Project project;
+    private Project project;
 
     @Column(name = "hire_date")
-    LocalDate hireDate;
+    private LocalDate hireDate;
 
     @Column(name = "gender_id")
-    Gender gender;
+    private Gender gender;
 }

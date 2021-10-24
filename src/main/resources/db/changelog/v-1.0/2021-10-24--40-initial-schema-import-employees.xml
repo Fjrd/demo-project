@@ -2,13 +2,8 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
-      http://www.liquibase.org/xml/ns/pro
-      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
-
-
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
     <property name="uuid_type" value="uuid" dbms="postgresql"/>
     <property name="uuid_type" value="uniqueidentifier" dbms="mssql"/>
@@ -23,7 +18,7 @@
     </preConditions>
 
     <changeSet id="create-table-employees" author="Alexander Reztsov">
-        <createTable tableName="EMPLOYEES">
+        <createTable tableName="employees">
             <column name="id" type="${uuid_type}" generationType="${uuid_function}">
                 <constraints primaryKey="true"/>
             </column>
