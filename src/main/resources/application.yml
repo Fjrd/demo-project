@@ -2,7 +2,9 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/demo-project
     username: fjrd
-
+  data:
+    rest:
+      detection-strategy: annotated
   jpa:
     show-sql: true
     properties:
