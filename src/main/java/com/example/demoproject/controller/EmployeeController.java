@@ -1,6 +1,6 @@
 package com.example.demoproject.controller;
 
-import com.example.demoproject.domain.Employee;
+import com.example.demoproject.dto.EmployeeDto;
 import com.example.demoproject.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,14 +20,14 @@ public class EmployeeController {
     private final EmployeeService service;
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAll() {
-        List<Employee> list = service.findAll();
+    public ResponseEntity<List<EmployeeDto>> getAll() {
+        List<EmployeeDto> list = service.findAll();
         return ResponseEntity.ok(list);
     }
 
     @PostMapping
-    public ResponseEntity<Employee> create(@RequestBody @Validated Employee employee, UriComponentsBuilder uriComponentsBuilder) {
-        Employee saved = service.save(employee);
+    public ResponseEntity<EmployeeDto> create(@RequestBody @Validated EmployeeDto dto, UriComponentsBuilder uriComponentsBuilder) {
+        EmployeeDto saved = service.save(dto);
         URI uri = uriComponentsBuilder
                 .path("/api/employees/{id}")
                 .buildAndExpand(saved.getId())
@@ -36,14 +36,14 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> getById(@PathVariable UUID id) {
-        Employee employee = service.getById(id);
-        return ResponseEntity.ok(employee);
+    public ResponseEntity<EmployeeDto> getById(@PathVariable UUID id) {
+        EmployeeDto dto = service.getById(id);
+        return ResponseEntity.ok(dto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Employee> update(@PathVariable UUID id, @RequestBody @Validated Employee employee, UriComponentsBuilder uriComponentsBuilder) {
-        Employee updated = service.update(id, employee);
+    public ResponseEntity<EmployeeDto> update(@PathVariable UUID id, @RequestBody @Validated EmployeeDto dto, UriComponentsBuilder uriComponentsBuilder) {
+        EmployeeDto updated = service.update(id, dto);
         URI uri = uriComponentsBuilder
                 .path("/api/employees/{id}")
                 .buildAndExpand(updated.getId())

@@ -1,9 +1,10 @@
-package com.example.demoproject.domain;
+package com.example.demoproject.dto;
 
-import lombok.*;
-import org.springframework.validation.annotation.Validated;
+import com.example.demoproject.domain.Gender;
+import com.example.demoproject.domain.Position;
+import com.example.demoproject.domain.Project;
+import lombok.Data;
 
-import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -11,17 +12,9 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
-@Builder(toBuilder = true)
-@NoArgsConstructor
-@AllArgsConstructor
-@Validated
-@Entity
-@Table(name = "employees")
-public class Employee {
+public class EmployeeDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @EqualsAndHashCode.Include
+    @NotNull
     private UUID id;
 
     @NotNull
@@ -39,18 +32,14 @@ public class Employee {
     private Double experience;
 
     @NotNull
-    @Column(name = "job_id")
     private Position position;
 
     @NotNull
-    @Column(name = "project_id")
     private Project project;
 
     @NotNull
-    @Column(name = "hire_date")
     private LocalDate hireDate;
 
     @NotNull
-    @Column(name = "gender_id")
     private Gender gender;
 }

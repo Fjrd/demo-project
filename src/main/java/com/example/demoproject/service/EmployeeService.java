@@ -1,18 +1,18 @@
 package com.example.demoproject.service;
 
-import com.example.demoproject.domain.Employee;
+import com.example.demoproject.dto.EmployeeDto;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface EmployeeService {
-    List<Employee> findAll();
+    List<EmployeeDto> findAll();
 
-    Employee save(Employee employee);
+    EmployeeDto save(EmployeeDto dto);
 
-    Employee getById(UUID id);
+    EmployeeDto getById(UUID id);
 
     void delete(UUID id);
 
-    Employee update(UUID id, Employee employee);
+    EmployeeDto update(UUID id, EmployeeDto dto);
 }
