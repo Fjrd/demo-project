@@ -28,7 +28,6 @@ public class EmployeeDto {
     @NotNull
     private Integer age;
 
-    @NotNull
     private Double experience;
 
     @NotNull

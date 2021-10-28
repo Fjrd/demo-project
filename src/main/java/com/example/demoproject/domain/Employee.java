@@ -35,7 +35,6 @@ public class Employee {
     @NotNull
     private Integer age;
 
-    @NotNull
     private Double experience;
 
     @NotNull
