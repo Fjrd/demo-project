@@ -12,5 +12,6 @@
     <include file="2021-10-24--30-initial-schema-import-projects.xml" relativeToChangelogFile="true"/>
     <include file="2021-10-24--31-import-data-projects.xml" relativeToChangelogFile="true"/>
     <include file="2021-10-24--40-initial-schema-import-employees.xml" relativeToChangelogFile="true"/>
+    <include file="2021-10-28--10-alter-employee-experience-default.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
