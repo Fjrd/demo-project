@@ -1,4 +1,4 @@
-package com.example.demoproject.controller.impl;
+package com.example.demoproject.controller;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @SpringBootTest
-class EmployeeControllerImplTest {
+class EmployeeControllerTest {
 
     @Autowired
     MockMvc mockMvc;
