@@ -31,14 +31,13 @@ public class EmployeeController {
 
     @PostMapping
     public ResponseEntity<EmployeeDto> create(@RequestBody @Validated EmployeeDto dto, UriComponentsBuilder uriComponentsBuilder) {
-        log.info("create() - start, dto = {}, uriComponentsBuilder = {}", dto, uriComponentsBuilder);
+        log.info("create() - start, dto = {}", dto);
         EmployeeDto saved = service.save(dto);
         log.info("create(), saved = {}", saved);
         URI uri = uriComponentsBuilder
                 .path("/api/employees/{id}")
                 .buildAndExpand(saved.getId())
                 .toUri();
-        log.info("create(), uri = {}", uri);
         return ResponseEntity.created(uri).build();
     }
 
@@ -52,14 +51,13 @@ public class EmployeeController {
 
     @PutMapping("/{id}")
     public ResponseEntity<EmployeeDto> update(@PathVariable UUID id, @RequestBody @Validated EmployeeDto dto, UriComponentsBuilder uriComponentsBuilder) {
-        log.info("update() - start, id = {}, dto = {}, uriComponentsBuilder = {}", id, dto, uriComponentsBuilder);
+        log.info("update() - start, id = {}, dto = {}", id, dto);
         EmployeeDto updated = service.update(id, dto);
         log.info("update(), updated = {}", updated);
         URI uri = uriComponentsBuilder
                 .path("/api/employees/{id}")
                 .buildAndExpand(updated.getId())
                 .toUri();
-        log.info("update(), uri = {}", uri);
         return ResponseEntity.created(uri).build();
     }
 
