@@ -1,7 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/demo-project
-    username: fjrd
+    username: postgres
+    password: postgres
   data:
     rest:
       detection-strategy: annotated
@@ -17,3 +18,4 @@ spring:
     change-log: db/changelog/db.changelog-master.xml
 
 
+postgres
