@@ -16,6 +16,3 @@ spring:
     enabled: true
     drop-first: true
     change-log: db/changelog/db.changelog-master.xml
-
-
-postgres
