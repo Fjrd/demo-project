@@ -20,8 +20,8 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_DB: demo-project        
-          POSTGRES_PASSWORD: fjrd12
-          POSTGRES_USER: fjrd
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
         ports:
         - 5432:5432
         options: >-
