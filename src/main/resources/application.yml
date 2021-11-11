@@ -1,7 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/demo-project
-    username: fjrd
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
   data:
     rest:
       detection-strategy: annotated
@@ -15,5 +16,3 @@ spring:
     enabled: true
     drop-first: true
     change-log: db/changelog/db.changelog-master.xml
-
-
