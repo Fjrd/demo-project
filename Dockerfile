@@ -1,11 +1,14 @@
-FROM openjdk
+FROM openjdk AS MAVEN_BUILD
 
 WORKDIR /app
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
-
 COPY src ./src
 
-CMD ["./mvnw", "spring-boot:run"]
+RUN ./mvnw clean
+RUN ./mvnw package -DskipTests
+
+FROM openjdk
+
+COPY --from=MAVEN_BUILD /app/target/*.jar app.jar

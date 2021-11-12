@@ -14,7 +14,7 @@ services:
     environment:
       - SERVER_PORT=8080
       - POSTGRES_URL=jdbc:postgresql://postgresserver/postgres
-    command: ./mvnw spring-boot:run
+    command: ['java', '-jar', '/app.jar']
 
   postgres:
     container_name: postgresserver
