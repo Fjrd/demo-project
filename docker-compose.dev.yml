@@ -1,5 +1,6 @@
 version: '3.9'
 services:
+  #demo-project APP
   app:
     container_name: app
     image: demo-project
@@ -7,24 +8,28 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8000:8000
       - 8080:8080
     depends_on:
       - postgres
     environment:
       - SERVER_PORT=8080
       - POSTGRES_URL=jdbc:postgresql://postgresserver/postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     command: ['java', '-jar', '/app.jar']
 
+  #demo-project DB
   postgres:
     container_name: postgresserver
-    image: postgres
+    image: postgres:alpine3.14
     ports:
       - 5432:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
+    restart: unless-stopped
+
     volumes:
     - pg-db-data:/var/lib/postgresql/data/
 
